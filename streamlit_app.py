@@ -361,7 +361,7 @@ def gt_to_html(gt: GT) -> str:
 # -----------------------------
 
 
-st.title("⚽ Wyscout xDanger rankings")
+st.title("⚽ Premier League 2024 xD Rankings")
 st.caption(
     "Browse precomputed position rankings. "
     "Tables are built with Great Tables and rendered as HTML."
