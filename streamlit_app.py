@@ -1,6 +1,6 @@
 """Streamlit app to browse position-ranked xD tables (Great Tables).
 
-What this app expects in your repo (default):
+What this app expects in the repo (default):
 
     outputs/rankings_partitioned/
         position=Winger/part-0.parquet
@@ -38,15 +38,15 @@ from great_tables import GT, loc, style
 # -----------------------------
 
 st.set_page_config(
-    page_title="Wyscout xD Rankings",
-    page_icon="⚽",
+    page_title="Premier League 2024 xD Rankings",
+    page_icon="⚠️",
     layout="wide",
 )
 
 st.markdown(
     """
 <style>
-/* Wrap your GT HTML in <div class="gt-dark"> ... </div> */
+/* Wrap GT HTML in <div class="gt-dark"> ... </div> */
 .gt-dark {
   background: #0e1117;          /* Streamlit dark-ish */
   color: #e6e6e6;
@@ -213,7 +213,7 @@ def make_position_table(
 ) -> GT:
     """Build a Great Tables ranking table for a single position, paginated.
 
-    Color rules (your spec):
+    Color rules:
       - xD_per_90: Reds (top = dark/bright)
       - danger_passes_per_90: Greens (top = dark/bright)
       - xD_efficiency: YlOrBr (top = dark/bright)
@@ -232,7 +232,7 @@ def make_position_table(
     # Derived metric (Concept 2)
     d["xD_efficiency"] = d["total_xD"] / d["danger_passes"].replace({0: pd.NA})
 
-    # Rank order (rank_xD is already partition-safe in your query)
+    # Rank order (rank_xD is already partition-safe in query)
     d = d.sort_values(["rank_xD"], ascending=True)
 
     # Pagination (page is 1-based in UI)
@@ -363,7 +363,7 @@ def gt_to_html(gt: GT) -> str:
 
 st.title("⚽ Wyscout xDanger rankings")
 st.caption(
-    "Browse your precomputed position rankings. "
+    "Browse precomputed position rankings. "
     "Tables are built with Great Tables and rendered as HTML."
 )
 
